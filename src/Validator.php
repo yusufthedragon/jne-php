@@ -36,7 +36,7 @@ class Validator
     public static function validateParams(array $requiredParameters, array $parameters) : void
     {
         foreach ($requiredParameters as $requiredParameter) {
-            if (!in_array($requiredParameter, array_flip($parameters))) {
+            if (!isset($parameters[$requiredParameter])) {
                 throw new \InvalidArgumentException("Parameter ${requiredParameter} is missing.");
             }
         }
