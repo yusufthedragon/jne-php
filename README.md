@@ -157,6 +157,9 @@ $tracePackage = \YusufTheDragon\JNE\Tracking::trace('0114541900204500');
 var_dump($tracePackage);
 ```
 
+## License
+This library is open-sourced software licensed under the [GPL-3.0-only License](https://opensource.org/licenses/gpl-3.0.html).
+
 ## Contributing
 
 For any requests, bugs, or comments, please open an [issue](https://github.com/yusufthedragon/jne-php/issues) or [submit a pull request](https://github.com/yusufthedragon/jne-php/pulls).
