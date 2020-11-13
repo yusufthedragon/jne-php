@@ -50,7 +50,7 @@ class AirWayBill
         $sendRequest = HttpClient::sendRequest($apiEndpoint, 'POST', $parameters);
         $response = json_decode($sendRequest);
 
-        if ($response->error) {
+        if (isset($response->status) && ($response->status === 'Error' || $response->status === 'false' || $response->status === false)) {
             throw new ApiException($response->error, 500);
         }
 

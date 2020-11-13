@@ -41,7 +41,7 @@ class Tracking
         $sendRequest = HttpClient::sendRequest($apiEndpoint, 'POST');
         $response = json_decode($sendRequest);
 
-        if (isset($response->status) && ($response->status === 'Error' || $response->status === 'false')) {
+        if (isset($response->status) && ($response->status === 'Error' || $response->status === 'false' || $response->status === false)) {
             throw new ApiException($response->error, 500);
         }
 
