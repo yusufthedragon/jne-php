@@ -50,7 +50,7 @@ class Fare
         $sendRequest = HttpClient::sendRequest($apiEndpoint, 'POST', $parameters);
         $response = json_decode($sendRequest);
 
-        if (isset($response->status) && ($response->status === 'Error' || $response->status === 'false' || $response->status === false)) {
+        if (!Validator::validateResponse($response)) {
             throw new ApiException($response->error, 500);
         }
 

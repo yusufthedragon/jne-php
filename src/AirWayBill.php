@@ -46,12 +46,12 @@ class AirWayBill
     {
         Validator::validateParams(self::REQUIRED_PARAMETERS, $parameters);
         
-        $apiEndpoint = JNE::$apiKey . '/cnoteretails';
+        $apiEndpoint = JNE::$baseUrl . '/cnoteretails';
         $sendRequest = HttpClient::sendRequest($apiEndpoint, 'POST', $parameters);
         $response = json_decode($sendRequest);
 
-        if (isset($response->status) && ($response->status === 'Error' || $response->status === 'false' || $response->status === false)) {
-            throw new ApiException($response->error, 500);
+        if (!Validator::validateResponse($response)) {
+            throw new ApiException($response->reason, 500);
         }
 
         return $response;

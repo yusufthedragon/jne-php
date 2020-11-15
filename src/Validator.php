@@ -41,4 +41,22 @@ class Validator
             }
         }
     }
+
+    /**
+     * Check if response from JNE is valid.
+     *
+     * @param  object  $response
+     *
+     * @return bool
+     *
+     * @throws \InvalidArgumentException
+     */
+    public static function validateResponse(object $response) : bool
+    {
+        if (isset($response->status) && ($response->status === 'Error' || $response->status === 'false' || $response->status === false)) {
+            return false;
+        }
+
+        return true;
+    }
 }
