@@ -51,7 +51,7 @@ class AirWayBill
         $response = json_decode($sendRequest);
 
         if (!Validator::validateResponse($response)) {
-            throw new ApiException($response->reason, 500);
+            throw new ApiException($response->reason ?? $response->error, 500);
         }
 
         return $response;
